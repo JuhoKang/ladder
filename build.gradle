@@ -1,0 +1,28 @@
+plugins {
+    id 'java'
+    id 'application'
+    id 'idea'
+    id "io.freefair.lombok" version "3.2.1"
+}
+
+group 'kr.juho.ex.oop'
+version '1.0-SNAPSHOT'
+
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    //junit5
+    testCompile("org.junit.jupiter:junit-jupiter-api:5.4.2")
+    testRuntime("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+}
+
+test {
+    //setup junit5
+    useJUnitPlatform()
+}
+
+mainClassName = 'main.App'
