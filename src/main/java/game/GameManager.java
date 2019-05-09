@@ -24,15 +24,18 @@ public class GameManager {
       System.out.println("최대 사다리 높이는?");
       int depth = Integer.parseInt(sc.nextLine());
 
-      createLadderGame(entryList, goalList, depth);
-
+      initPhase(entryList, goalList, depth);
+      showLadderPhase();
       resultPhase();
     }
   }
 
-  private void createLadderGame(List<String> entryList, List<String> goalList, int depth) {
+  private void initPhase(List<String> entryList, List<String> goalList, int depth) {
     ladderGame = LadderGame.init(entryList, goalList, depth);
     ladderGame.randomizeLadder();
+  }
+
+  private void showLadderPhase() {
     ladderGame.printLadder();
   }
 
@@ -48,9 +51,9 @@ public class GameManager {
   }
 
   /**
-   * 귀찮아서 validation 한번에 모아둠
+   * TODO 귀찮아서 validation 한번에 모아둠 차후에 validator로 분리
    */
-  private boolean isValidGameInput(List<String> entryList, List<String> goalList) {
+  private static boolean isValidGameInput(List<String> entryList, List<String> goalList) {
     if (entryList.size() > 8) {
       System.out.println("8인 초과로는 사다리 게임을 진행할 수 없습니다.");
       return false;

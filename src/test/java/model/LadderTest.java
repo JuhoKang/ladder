@@ -7,23 +7,23 @@ import org.junit.jupiter.api.Test;
 class LadderTest {
 
   @Test
-  public void test() {
-    Ladder ladder = Ladder.init(5, 6);
+  void test() {
+    Ladder ladder = Ladder.create(5, 6);
     printLadder(ladder);
   }
 
   @Test
-  public void processTest_init() {
-    Ladder ladder = Ladder.init(5, 6);
-    assertEquals(ladder.process(0), 0);
-    assertEquals(ladder.process(1), 1);
-    assertEquals(ladder.process(2), 2);
-    assertEquals(ladder.process(3), 3);
-    assertEquals(ladder.process(4), 4);
+  void progressTest_create() {
+    Ladder ladder = Ladder.create(5, 6);
+    assertEquals(ladder.progress(0), 0);
+    assertEquals(ladder.progress(1), 1);
+    assertEquals(ladder.progress(2), 2);
+    assertEquals(ladder.progress(3), 3);
+    assertEquals(ladder.progress(4), 4);
   }
 
   @Test
-  public void processTest_predefined() {
+  void progressTest_predefined() {
     Node[][] predefNodeGrid = new Node[3][3];
 
     /**
@@ -42,23 +42,23 @@ class LadderTest {
     predefNodeGrid[2][1] = new Node(1);
     predefNodeGrid[2][2] = new Node(2);
 
-    Ladder ladder = Ladder.init(predefNodeGrid);
+    Ladder ladder = Ladder.create(predefNodeGrid);
 
-    assertEquals(ladder.process(0), 2);
-    assertEquals(ladder.process(1), 1);
-    assertEquals(ladder.process(2), 0);
+    assertEquals(ladder.progress(0), 2);
+    assertEquals(ladder.progress(1), 1);
+    assertEquals(ladder.progress(2), 0);
 
     printLadder(ladder);
   }
 
   @Test
-  public void randomizeTest() {
-    Ladder ladder = Ladder.init(3, 3);
+  void randomizeTest() {
+    Ladder ladder = Ladder.create(3, 3);
     ladder.randomize();
     printLadder(ladder);
   }
 
-  public void printLadder(Ladder ladder) {
+  void printLadder(Ladder ladder) {
     Node[][] nodeGrid = ladder.getNodeGrid();
     for (int i = 0; i < ladder.getDepth(); i++) {
       for (int j = 0; j < ladder.getLine(); j++) {

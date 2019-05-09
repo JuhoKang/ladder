@@ -6,7 +6,7 @@ import model.Node;
 
 public class LadderGame {
 
-  private static final int branchWidth = 6;
+  private static final int BRANCH_WIDTH = 6;
 
   private List<String> entryList;
   private List<String> goalList;
@@ -16,7 +16,7 @@ public class LadderGame {
     LadderGame game = new LadderGame();
     game.entryList = entryList;
     game.goalList = goalList;
-    game.ladder = Ladder.init(entryList.size(), depth);
+    game.ladder = Ladder.create(entryList.size(), depth);
     return game;
   }
 
@@ -29,7 +29,7 @@ public class LadderGame {
 
     Node[][] nodeGrid = ladder.getNodeGrid();
     for (int d = 0; d < ladder.getDepth(); d++) {
-      for (int i = 0; i < branchWidth / 2; i++) {
+      for (int i = 0; i < BRANCH_WIDTH / 2; i++) {
         System.out.print(" ");
       }
       for (int l = 0; l < ladder.getLine() - 1; l++) {
@@ -44,7 +44,7 @@ public class LadderGame {
   }
 
   private void printInfoLine(List<String> infoList) {
-    int ePrintSpace = branchWidth + 1;
+    int ePrintSpace = BRANCH_WIDTH + 1;
     for (String info : infoList) {
       int frontSpace = (ePrintSpace - info.length()) / 2;
       int backSpace = ePrintSpace - info.length() - frontSpace;
@@ -64,7 +64,7 @@ public class LadderGame {
 
   public void printResultOfEntry(String entry) {
     int entryNum = entryList.indexOf(entry);
-    if(entryNum > -1) {
+    if (entryNum > -1) {
       System.out.println(goalList.get(ladder.process(entryNum)));
     } else {
       System.out.println("올바른 이름을 입력해 주세요.");
@@ -82,7 +82,7 @@ public class LadderGame {
     if (isBranch) {
       branchStyle = "-";
     }
-    for (int i = 0; i < branchWidth; i++) {
+    for (int i = 0; i < BRANCH_WIDTH; i++) {
       System.out.print(branchStyle);
     }
   }
